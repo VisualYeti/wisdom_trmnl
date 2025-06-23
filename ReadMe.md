@@ -1,0 +1,1 @@
+Copy the code from index.html and paste it into a new private plugin in your Trmnl dashboard
