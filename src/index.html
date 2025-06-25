@@ -106,7 +106,7 @@
 			const quotes = wisdomBlock
 				.split('\n')
 				.map(q => q.trim().replace(/^-\s+/, ''))
-				.filter(q => q.length > 0);
+				.filter(q => q.length > 0 && !/^[-*_]{3,}$/.test(q));
 
 			// Pick a deterministic quote based on today's date
 			const dateSeed = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
