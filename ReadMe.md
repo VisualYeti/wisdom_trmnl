@@ -6,8 +6,9 @@ Display a new quote once a day from Merlin Mann's "The Wisdom Document" - [wisdo
 
 ### Now available as a Trmnl recipe
 
-[Install the recipe](https://usetrmnl.com/recipes/100671)
-https://usetrmnl.com/recipes/100671
+Follow the link below and click install
+
+[Wisdom Document Plugin Trmnl Recipe](https://usetrmnl.com/recipes/100671)
 
 ---
 
