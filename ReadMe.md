@@ -1,6 +1,6 @@
-## Daily Quotes from The Wisdom Document
+## Daily Quotes from The Wisdom Project
 
-Display a new quote once a day from Merlin Mann's "The Wisdom Document" - [wisdom.limo](http://wisdom.limo)
+Display a daily quote from Merlin Mann's "The Wisdom Project" - [wisdom.limo](http://wisdom.limo)
 
 ---
 
