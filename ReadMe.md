@@ -21,3 +21,14 @@ To create your own version as a private plugin:
 
 
 ![](screenshot.png)
+
+
+### Dev
+Use dev.sh to start the TRMNL docker container and preview the plugin
+```bash
+./dev.sh
+```
+To rebuild the image
+```bash
+./dev.sh --rebuild
+```

@@ -1,0 +1,20 @@
+---
+strategy: static
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: '{}'
+polling_verb: get
+polling_url: ''
+polling_headers: ''
+polling_body: ''
+id: 100671
+custom_fields:
+- keyname: wisdom_trmnl
+  name: Wisdom Project Quotes
+  field_type: author_bio
+  description: Display a daily quote from Merlin Mann's "The Wisdom Project" - http://wisdom.limo
+  github_url: https://github.com/VisualYeti/wisdom_trmnl
+  learn_more_url: http://wisdom.limo
+  email_address: support@visualyeti.com
+name: Wisdom Project Quotes
+refresh_interval: 1440
