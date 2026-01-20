@@ -19,4 +19,5 @@ To create your own version as a private plugin:
 - be sure to copy the src from shared.liquid into your Shared markup
 
 
+
 ![](screenshot.png)
