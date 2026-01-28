@@ -1,40 +1,20 @@
-<div class="screen">
-	<div class="view">
-		<div class="layout layout--col layout--stretch quote-box">
-			<div class="flex flex--row flex--left quote-mark-top-box">
-				<div class="quote-font quote-mark quote-mark-top text--gray-40">“</div>
-			</div>
-			<div class="flex flex--row flex-stretch-y value-small value--xxxlarge text--black" data-value-fit="true" data-value-fit-max-height="230">
-				<span class="quote-font" id="quote">Priorities are like arms. If you think you have more than a couple, you're either lying or crazy.</span>
-			</div>
-			<div class="flex flex--row flex--right quote-mark-bottom-box">
-				<div class="quote-font quote-mark quote-mark-bottom text--gray-40">”</div>
+<div class="view view--full">
+	<div class="quote-font layout layout--row">
+		<div class="stretch-y value-small value--xxxlarge text--gray-40" >
+			“
+		</div>
+		<div id="quote" class="value-small value--xxxlarge text--black" data-value-fit="true" data-value-fit-max-height="230">
+			Priorities are like arms. If you think you have more than a couple, you're either lying or crazy.
+		</div>
+		<div class="stretch-y text--gray-40">
+			<div class="layout layout--col layout--stretch-y" >
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="text--gray-40 value-small value--xxxlarge">”</div>
 			</div>
 		</div>
 	</div>
+	{{ wisdom_quote_footer }}
 </div>
-{{ wisdom_quote_footer }}
-<style>
-	.quote-font {
-		font-family: "Joan", Georgia, 'Palatino Linotype', serif;
-	}
-	.quote-mark {
-		font-size: 120px;
-		margin-bottom: -80px;
-	}
-	.quote-mark-top {
-		margin-bottom: -120px;
-	}
-	.quote-mark-top-box {
-		margin-top: -100px;
-	}
-	.quote-mark-bottom {
-		padding-right: 20px;
-	}
-	.quote-mark-bottom-box {
-		margin-bottom: -60px;
-	}
-	#quote {
-		margin-right: 20px;
-	}
-</style>
