@@ -8,13 +8,24 @@ polling_url: ''
 polling_headers: ''
 polling_body: ''
 id: 100671
+dark_mode: 'yes'
 custom_fields:
 - keyname: wisdom_trmnl
-  name: Wisdom Project Quotes
+  name: The Wisdom Project Quotes
+  category: life,productivity
   field_type: author_bio
   description: Display a daily quote from Merlin Mann's "The Wisdom Project" - http://wisdom.limo
   github_url: https://github.com/VisualYeti/wisdom_trmnl
   learn_more_url: http://wisdom.limo
   email_address: support@visualyeti.com
-name: Wisdom Project Quotes
+- keyname: quote_size
+  field_type: select
+  name: Quote Size
+  default: 20
+  optional: true
+  options:
+  - Small: 10
+  - Medium: 20
+  - Large: 30
+name: The Wisdom Project Quotes
 refresh_interval: 1440
