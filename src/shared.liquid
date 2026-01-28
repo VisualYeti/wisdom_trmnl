@@ -31,7 +31,7 @@
 		}
 		return Math.abs(hash);
 	}
-
+	let quotesTest = [];
 	async function getQuote () {
 		const url = 'https://raw.githubusercontent.com/merlinmann/wisdom/master/wisdom.md';
 		const res = await fetch(url);
@@ -48,13 +48,19 @@
 		const quotes = wisdomBlock
 			.split('\n')
 			.map(q => q.trim().replace(/^-\s+/, ''))
-			.filter(q => q.length > 0 && !/^[-*_]{3,}$/.test(q));
+			.filter(q => q.length > 0 && !/^[-*_]{3,}$/.test(q))
+			.filter(q => {
+				const cleaned = q.trim();
+				return cleaned.length > 0 
+					&& !/^[-*_]{3,}$/.test(cleaned)
+					&& !cleaned.startsWith('<!--')
+					&& cleaned !== '-->';
+			});
 
 		// Pick a deterministic quote based on today's date
 		const dateSeed = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
 		const quoteIndex = hashString(dateSeed) % quotes.length;
 		const selected = quotes[quoteIndex];
-
 		document.querySelector('#quote').innerHTML = markdownToHTML(selected);
 	}
 
