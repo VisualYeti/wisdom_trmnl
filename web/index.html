@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<!-- Created by Joe Bibby -->
+<!-- https://github.com/VisualYeti/wisdom_trmnl -->
+<!-- this page can be used on a website if you don't have a TRMNL -->
+ <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
@@ -101,56 +104,38 @@
 	</div>
 
 	<script>
-		function markdownToHTML (text) {
-			return text
-				.replace(/^-\s+/, '')                            // Remove leading "- "
-				.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-				.replace(/\*(.*?)\*/g, '<em>$1</em>')             // Italic
-				.replace(/`([^`]+)`/g, '<code>$1</code>')         // Inline code
-				.replace(/~~(.*?)~~/g, '<s>$1</s>');              // Strikethrough
-		}
+		// ============================================
+		// CONFIGURATION - Update this for production
+		// ============================================
+		const CONFIG = {
+			// Public API endpoint (no API key required)
+			apiUrl: 'http://localhost:3000/api/v1/quote/public',
+		};
+		// ============================================
 
-		function hashString (str) {
-			let hash = 0;
-			for (let i = 0; i < str.length; i++) {
-				hash = ((hash << 5) - hash) + str.charCodeAt(i);
-				hash |= 0;
+		async function getQuote() {
+			try {
+				const response = await fetch(CONFIG.apiUrl);
+
+				if (!response.ok) {
+					const error = await response.json();
+					throw new Error(error.error?.message || 'Failed to fetch quote');
+				}
+
+				const result = await response.json();
+
+				if (result.success && result.data) {
+					// Use the pre-rendered HTML from the server
+					document.querySelector('#quote').innerHTML = result.data.quote_html;
+				} else {
+					throw new Error('Invalid response from server');
+				}
+			} catch (error) {
+				console.error('Error fetching quote:', error);
+				document.querySelector('#quote').textContent = 'Unable to load wisdom. Please check your configuration.';
 			}
-			return Math.abs(hash);
 		}
 
-		async function getQuote () {
-			const url = 'https://raw.githubusercontent.com/merlinmann/wisdom/master/wisdom.md';
-			const res = await fetch(url);
-			const text = await res.text();
-
-			const [, afterHeader] = text.split(/The Wisdom so far/i);
-			const [wisdomBlock] = afterHeader.split(/Works Cited/i);
-
-			if (!wisdomBlock) {
-				document.querySelector('#quote').textContent = 'No wisdom found.';
-				return;
-			}
-
-			const quotes = wisdomBlock
-				.split('\n')
-				.map(q => q.trim().replace(/^-\s+/, ''))
-				.filter(q => q.length > 0)
-				.filter(q => {
-				const cleaned = q.trim();
-				return cleaned.length > 0 
-					&& !/^[-*_]{3,}$/.test(cleaned)
-					&& !cleaned.startsWith('<!--')
-					&& cleaned !== '-->';
-				});
-
-			// Pick a deterministic quote based on today's date
-			const dateSeed = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
-			const quoteIndex = hashString(dateSeed) % quotes.length;
-			const selected = quotes[quoteIndex];
-
-			document.querySelector('#quote').innerHTML = markdownToHTML(selected);
-		}
 		getQuote();
 	</script>
 </body>

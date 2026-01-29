@@ -3,8 +3,12 @@
 		<div class="quote-mark-top stretch-y value--small value--large text--gray-40" >
 			“
 		</div>
-		<div id="quote" class="value--small value--xlarge text--black" data-value-fit="true" data-value-fit-max-height="180">
-			Priorities are like arms. If you think you have more than a couple, you're either lying or crazy.
+		<div id="quote" class="value--small value--xlarge text--black" data-value-fit="true" data-value-fit-max-height="170">
+			{% if data.quote_html %}
+				{{ data.quote_html }}
+			{% else %}
+				Unable to load a quote.
+			{% endif %}
 		</div>
 		<div class="stretch-y text--gray-40">
 			<div class="layout layout--col layout--stretch-y" >

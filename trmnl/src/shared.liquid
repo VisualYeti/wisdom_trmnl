@@ -10,63 +10,11 @@
 	<span class="title">{{ trmnl.plugin_settings.name }} — <a class="tiny" href="http://wisdom.limo">wisdom.limo</a></span>
 </div>
 {% endcapture %}
+{% if trmnl.plugin_settings.custom_fields_values.quote_font != "TRMNL" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Joan&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-<script>
-	function markdownToHTML (text) {
-		return text
-			.replace(/^-\s+/, '')                            // Remove leading "- "
-			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-			.replace(/\*(.*?)\*/g, '<em>$1</em>')             // Italic
-			.replace(/`([^`]+)`/g, '<code>$1</code>')         // Inline code
-			.replace(/~~(.*?)~~/g, '<s>$1</s>');              // Strikethrough
-	}
-
-	function hashString (str) {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			hash = ((hash << 5) - hash) + str.charCodeAt(i);
-			hash |= 0;
-		}
-		return Math.abs(hash);
-	}
-	let quotesTest = [];
-	async function getQuote () {
-		const url = 'https://raw.githubusercontent.com/merlinmann/wisdom/master/wisdom.md';
-		const res = await fetch(url);
-		const text = await res.text();
-
-		const [, afterHeader] = text.split(/The Wisdom so far/i);
-		const [wisdomBlock] = afterHeader.split(/Works Cited/i);
-
-		if (!wisdomBlock) {
-			document.querySelector('#quote').textContent = 'No wisdom found.';
-			return;
-		}
-
-		const quotes = wisdomBlock
-			.split('\n')
-			.map(q => q.trim().replace(/^-\s+/, ''))
-			.filter(q => q.length > 0 && !/^[-*_]{3,}$/.test(q))
-			.filter(q => {
-				const cleaned = q.trim();
-				return cleaned.length > 0 
-					&& !/^[-*_]{3,}$/.test(cleaned)
-					&& !cleaned.startsWith('<!--')
-					&& cleaned !== '-->';
-			});
-
-		// Pick a deterministic quote based on today's date based on current locale
-		const now = new Date();
-		const dateSeed = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-		const quoteIndex = hashString(dateSeed) % quotes.length;
-		const selected = quotes[quoteIndex];
-		document.querySelector('#quote').innerHTML = markdownToHTML(selected);
-	}
-
-	getQuote();
-</script>
+{% endif %}
 <style>
 	.quote-font {
 		{% if trmnl.plugin_settings.custom_fields_values.quote_font == "Joan" %}
@@ -79,6 +27,8 @@
 			font-family: "Raleway", sans-serif;
 		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "Rubik" %}
 			font-family: "Rubik", sans-serif;
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "TRMNL" %}
+			font-family: serif;
 		{% else %}
 			font-family: "Joan", Georgia, serif;
 		{% endif %}
