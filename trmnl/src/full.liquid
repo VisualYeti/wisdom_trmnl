@@ -13,7 +13,11 @@
 		<div class="value--xsmall value--large text--black" data-value-fit="true" data-value-fit-max-height="100">
 		{% endif %}
 			<span class="quote-font" id="quote">
-			Priorities are like arms. If you think you have more than a couple, you're either lying or crazy.
+			{% if data.quote_html %}
+				{{ data.quote_html }}
+			{% else %}
+				Unable to load a quote.
+			{% endif %}
 			</span>
 		</div>
 		<div class="stretch-y text--gray-40">

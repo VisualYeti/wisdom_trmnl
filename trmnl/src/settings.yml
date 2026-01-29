@@ -1,10 +1,10 @@
 ---
-strategy: static
+strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: '{}'
 polling_verb: get
-polling_url: ''
+polling_url: 'http://host.docker.internal:3000/api/v1/quote/public'
 polling_headers: ''
 polling_body: ''
 id: 100671
@@ -38,5 +38,6 @@ custom_fields:
   - Old Standard TT
   - Raleway
   - Rubik
+  - Default TRMNL Fonts: TRMNL
 name: The Wisdom Project Quotes
 refresh_interval: 1440

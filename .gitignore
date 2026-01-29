@@ -1,1 +1,7 @@
 .nova
+
+# Server
+srv/node_modules/
+srv/data/
+srv/.env
+srv/dist/
