@@ -74,7 +74,7 @@ router.get('/keys', requireAdminKey, (req, res) => {
 // DELETE /api/v1/admin/keys/:id - Invalidate an API key
 router.delete('/keys/:id', requireAdminKey, (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(req.params.id as string, 10);
 
     if (isNaN(id)) {
       res.status(400).json({

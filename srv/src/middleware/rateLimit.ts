@@ -1,10 +1,11 @@
 import rateLimit from 'express-rate-limit';
+import { Request } from 'express';
 import { config } from '../config.js';
 import { apiKeyStore } from '../services/rateLimitStore.js';
 
-function extractKeyPrefix(req: Express.Request): string | null {
+function extractKeyPrefix(req: Request): string | null {
   const apiKey = req.get(config.apiKeyHeader);
-  if (!apiKey || apiKey.length < 8) return null;
+  if (!apiKey || typeof apiKey !== 'string' || apiKey.length < 8) return null;
   // Return first 8 chars as prefix (e.g., "wk_abc12")
   return apiKey.substring(0, 8);
 }
