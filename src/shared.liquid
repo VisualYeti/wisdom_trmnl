@@ -7,7 +7,7 @@
 {% capture wisdom_quote_footer_short %}
 <div class="title_bar">
 	<img class="image" src="https://raw.githubusercontent.com/VisualYeti/wisdom_trmnl/refs/heads/main/LightBulbGray.png" alt="Wisdom Project Quotes">
-	<span class="title">{{ trmnl.plugin_settings.instance_name }} — <a href="http://wisdom.limo">wisdom.limo</a></span>
+	<span class="title">{{ trmnl.plugin_settings.instance_name }} — <a class="tiny" href="http://wisdom.limo">wisdom.limo</a></span>
 </div>
 {% endcapture %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,8 +57,9 @@
 					&& cleaned !== '-->';
 			});
 
-		// Pick a deterministic quote based on today's date
-		const dateSeed = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+		// Pick a deterministic quote based on today's date based on current locale
+		const now = new Date();
+		const dateSeed = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
 		const quoteIndex = hashString(dateSeed) % quotes.length;
 		const selected = quotes[quoteIndex];
 		document.querySelector('#quote').innerHTML = markdownToHTML(selected);
@@ -69,5 +70,10 @@
 <style>
 	.quote-font {
 		font-family: "Joan", Georgia, 'Palatino Linotype', serif;
+	}
+	.title {
+		a.tiny {
+			font-size: .75rem;
+		}
 	}
 </style>
