@@ -11,7 +11,7 @@ id: 100671
 dark_mode: 'yes'
 custom_fields:
 - keyname: wisdom_trmnl
-  name: The Wisdom Project Quotes
+  name: Wisdom Project Quotes
   category: life,productivity
   field_type: author_bio
   description: Display a daily quote from Merlin Mann's "The Wisdom Project" - http://wisdom.limo
@@ -20,12 +20,23 @@ custom_fields:
   email_address: support@visualyeti.com
 - keyname: quote_size
   field_type: select
-  name: Quote Size
+  name: Full View Quote Size
   default: 20
   optional: true
   options:
   - Small: 10
   - Medium: 20
   - Large: 30
+- keyname: quote_font
+  field_type: select
+  name: Quote Font
+  default: Joan
+  optional: true
+  options:
+  - Joan
+  - Caudex
+  - Old Standard TT
+  - Raleway
+  - Rubik
 name: The Wisdom Project Quotes
 refresh_interval: 1440

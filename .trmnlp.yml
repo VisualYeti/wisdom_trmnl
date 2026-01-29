@@ -4,7 +4,7 @@ watch:
   - src
   - .trmnlp.yml
 # values of custom fields (defined in src/settings.yml)
-custom_fields: { quote_size: 20 }
+custom_fields: { quote_size: 20, quote_font: 'Joan' }
 
 # Time zone IANA identifier to inject into trmnl.user; see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 time_zone: America/Chicago
@@ -15,4 +15,5 @@ variables:
     user:
       name: Joe Bibby
     plugin_settings:
+      name: Wisdom Project Quotes
       instance_name: The Wisdom Project Quotes

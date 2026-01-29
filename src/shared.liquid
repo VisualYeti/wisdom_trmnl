@@ -1,18 +1,18 @@
 {% capture wisdom_quote_footer %}
 <div class="title_bar">
 	<img class="image" src="https://raw.githubusercontent.com/VisualYeti/wisdom_trmnl/refs/heads/main/LightBulbGray.png" alt="Wisdom Project Quotes">
-	<span class="title">{{ trmnl.plugin_settings.instance_name }} — Merlin Mann — <a href="http://wisdom.limo">wisdom.limo</a></span>
+	<span class="title">{{ trmnl.plugin_settings.name }} — Merlin Mann — <a href="http://wisdom.limo">wisdom.limo</a></span>
 </div>
 {% endcapture %}
 {% capture wisdom_quote_footer_short %}
 <div class="title_bar">
 	<img class="image" src="https://raw.githubusercontent.com/VisualYeti/wisdom_trmnl/refs/heads/main/LightBulbGray.png" alt="Wisdom Project Quotes">
-	<span class="title">{{ trmnl.plugin_settings.instance_name }} — <a class="tiny" href="http://wisdom.limo">wisdom.limo</a></span>
+	<span class="title">{{ trmnl.plugin_settings.name }} — <a class="tiny" href="http://wisdom.limo">wisdom.limo</a></span>
 </div>
 {% endcapture %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Joan&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Joan&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 <script>
 	function markdownToHTML (text) {
 		return text
@@ -69,8 +69,21 @@
 </script>
 <style>
 	.quote-font {
-		font-family: "Joan", Georgia, 'Palatino Linotype', serif;
+		{% if trmnl.plugin_settings.custom_fields_values.quote_font == "Joan" %}
+			font-family: "Joan", Georgia, 'Palatino Linotype', serif;
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "Caudex" %}
+			font-family: "Caudex", "Joan", Georgia, 'Palatino Linotype', serif;
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "Old Standard TT" %}
+			font-family: "Old Standard TT", Georgia, 'Palatino Linotype', serif;
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "Raleway" %}
+			font-family: "Raleway", sans-serif;
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_font == "Rubik" %}
+			font-family: "Rubik", sans-serif;
+		{% else %}
+			font-family: "Joan", Georgia, serif;
+		{% endif %}
 	}
+
 	.title {
 		a.tiny {
 			font-size: .75rem;
