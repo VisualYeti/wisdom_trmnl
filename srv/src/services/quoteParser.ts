@@ -92,13 +92,9 @@ export function parseWisdomMarkdown(markdown: string): ParseResult {
     }
 
     if (isRelatedLine(cleaned)) {
-      // This is a "Related:" line - append to current quote's content
+      // This is a "Related:" line - store separately, don't append to parent
       if (currentQuote) {
-        // Keep the full line including "Related:" prefix
-        currentQuote.content += '\n' + cleaned;
-        // Update the hash to reflect the new content
-        currentQuote.contentHash = hashContent(currentQuote.content);
-        // Store the full line (with "Related:" prefix) for chain tracking
+        // Store the full line (with "Related:" prefix) as a separate quote
         currentQuote.relatedQuotes.push(cleaned);
       }
     } else {
