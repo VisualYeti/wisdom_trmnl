@@ -32,3 +32,17 @@ To rebuild the image
 ```bash
 ./dev.sh --rebuild
 ```
+
+
+### Quote Server
+Quotes are now served through an api. You can either host your own quote server, or use the public api
+#### Public (no authentication)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/health` | Health check (rate limited: 10/min per IP) |
+| GET | `/api/v1/quote/public` | Get today's quote (rate limited: 10/min per IP) |
+| GET | `/api/v1/quote/public?date=YYYY-MM-DD` | Get specific date's quote (rate limited: 10/min per IP) |
+
+#### More details in the [Server README](srv/README.md)
+
