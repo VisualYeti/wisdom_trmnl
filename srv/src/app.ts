@@ -24,8 +24,13 @@ app.use(cors({
 // Parse JSON bodies
 app.use(express.json());
 
-// Rate limiting
-app.use('/api', apiRateLimiter);
+// Rate limiting (skip public endpoint - it has its own rate limiter)
+app.use('/api', (req, res, next) => {
+  if (req.path === '/v1/quote/public') {
+    return next();
+  }
+  return apiRateLimiter(req, res, next);
+});
 
 // Health check (no auth required)
 app.get('/api/v1/health', (req, res) => {
