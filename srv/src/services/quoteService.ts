@@ -46,6 +46,15 @@ function getTodayDateString(): string {
   return now.toISOString().slice(0, 10); // "YYYY-MM-DD"
 }
 
+function isValidDateString(date?: string): date is string {
+  if (!date) return false;
+  // Validate YYYY-MM-DD format
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+  // Validate it's a real date
+  const parsed = new Date(date + 'T00:00:00Z');
+  return !isNaN(parsed.getTime());
+}
+
 function getYesterdayDateString(): string {
   const now = new Date();
   now.setDate(now.getDate() - 1);
@@ -154,9 +163,10 @@ function selectRandomUnservedQuote(): Quote | undefined {
   return quote;
 }
 
-export function getTodayQuote(): QuoteResponse | null {
+export function getTodayQuote(clientDate?: string): QuoteResponse | null {
   const db = getDb();
-  const today = getTodayDateString();
+  // Use client-provided date if valid, otherwise use UTC date
+  const today = isValidDateString(clientDate) ? clientDate : getTodayDateString();
 
   // 1. Check if we already have today's quote cached
   const cachedDaily = getDailyQuote(today);

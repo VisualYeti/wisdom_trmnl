@@ -54,12 +54,14 @@ npm run generate-key -- --name "My App" --admin
 |--------|----------|-------------|
 | GET | `/api/v1/health` | Health check |
 | GET | `/api/v1/quote/public` | Get today's quote (rate limited: 10/min per IP) |
+| GET | `/api/v1/quote/public?date=YYYY-MM-DD` | Get specific date's quote (rate limited: 10/min per IP) |
 
 ### Authenticated (requires API key)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/v1/quote` | Get today's quote (full response) |
+| GET | `/api/v1/quote?date=YYYY-MM-DD` | Get specific date's quote (full response) |
 | GET | `/api/v1/quote/random` | Get a random quote |
 
 ### Admin (requires admin API key)

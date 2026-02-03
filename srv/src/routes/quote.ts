@@ -25,9 +25,11 @@ const publicRateLimiter = rateLimit({
 });
 
 // GET /api/v1/quote/public - Public endpoint (no API key required)
+// Optional query param: ?date=YYYY-MM-DD (client's local date)
 router.get('/quote/public', publicRateLimiter, (req, res) => {
   try {
-    const quote = getTodayQuote();
+    const clientDate = req.query.date as string | undefined;
+    const quote = getTodayQuote(clientDate);
 
     if (!quote) {
       res.status(503).json({
@@ -69,9 +71,11 @@ router.get('/quote/public', publicRateLimiter, (req, res) => {
 });
 
 // GET /api/v1/quote - Get today's quote (authenticated)
+// Optional query param: ?date=YYYY-MM-DD (client's local date)
 router.get('/quote', requireApiKey, (req, res) => {
   try {
-    const quote = getTodayQuote();
+    const clientDate = req.query.date as string | undefined;
+    const quote = getTodayQuote(clientDate);
 
     if (!quote) {
       res.status(503).json({
