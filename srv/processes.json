@@ -1,0 +1,9 @@
+{
+	"apps" : [{
+		"name"        : "Wisdom Document Quotes Server",
+		"script"      : "dist/index.js",
+		"log_date_format"  : "YYYY-MM-DD HH:mm Z",
+		"error_file"      : "/var/log/wisdom/err.log",
+		"out_file"        : "/var/log/wisdom/out.log"
+	}]
+}

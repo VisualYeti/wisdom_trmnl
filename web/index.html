@@ -109,13 +109,15 @@
 		// ============================================
 		const CONFIG = {
 			// Public API endpoint (no API key required)
-			apiUrl: 'http://localhost:3000/api/v1/quote/public',
+			 apiUrl: 'https://wisdom.visualyeti.com/quotes/api/v1/quote/public',
 		};
 		// ============================================
 
 		async function getQuote() {
 			try {
-				const response = await fetch(CONFIG.apiUrl);
+				const now = new Date();
+				const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+				const response = await fetch(`${CONFIG.apiUrl}?date=${today}`);
 
 				if (!response.ok) {
 					const error = await response.json();
