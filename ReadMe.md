@@ -4,7 +4,13 @@ Display a daily quote from Merlin Mann's "The Wisdom Project" - [wisdom.limo](ht
 
 ---
 
-### Now available as a Trmnl recipe
+### Web client
+Preview the [web client ](https://wisdom.visualyeti.com)
+
+---
+### TRMNL recipe and private plugin
+
+#### Now available as a Trmnl recipe
 
 Follow the link below and click install
 
@@ -12,18 +18,15 @@ Follow the link below and click install
 
 ---
 
-### Private plugin install
+#### Private plugin install
 To create your own version as a private plugin:
 - Create a new private plugin
 - paste the relevant src file into the markup (Full, Half horizontal, etc...)
 - be sure to copy the src from shared.liquid into your Shared markup
 
+<img src="screenshot.png" alt="TRMNL recipe/plugin screenshot" width="500">
 
-
-![](screenshot.png)
-
-
-### Dev
+#### Dev
 Use dev.sh to start the TRMNL docker container and preview the plugin
 ```bash
 ./dev.sh
@@ -33,6 +36,7 @@ To rebuild the image
 ./dev.sh --rebuild
 ```
 
+---
 
 ### Quote Server
 Quotes are now served through an api. You can either host your own quote server, or use the public api

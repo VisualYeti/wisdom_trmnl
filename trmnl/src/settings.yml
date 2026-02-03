@@ -4,7 +4,7 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: '{}'
 polling_verb: get
-polling_url: 'http://host.docker.internal:3001/api/v1/quote/public?date=2026-01-31'
+polling_url: 'http://host.docker.internal:3001/api/v1/quote/public?date={{ "now" | date: "%Y-%m-%d" }}'
 polling_headers: ''
 polling_body: ''
 id: 100671
