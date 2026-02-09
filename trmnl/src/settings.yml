@@ -1,33 +1,29 @@
----
-strategy: polling
-no_screen_padding: 'no'
-dark_mode: 'no'
-static_data: '{}'
-polling_verb: get
-polling_url: 'https://wisdom.visualyeti.com/quotes/api/v1/quote/public?date={{ "now" | date: "%Y-%m-%d" }}'
-polling_headers: ''
-polling_body: ''
-id: 100671
-dark_mode: 'yes'
-custom_fields:
-- keyname: wisdom_trmnl
-  name: Wisdom Project Quotes
-  category: life,productivity
+- keyname: author_bio
   field_type: author_bio
-  description: Display a daily quote from Merlin Mann's "The Wisdom Project" - http://wisdom.limo
-  github_url: https://github.com/VisualYeti/wisdom_trmnl
-  learn_more_url: http://wisdom.limo
-  email_address: support@visualyeti.com
+  name: About This Plugin
+  description: "Display a daily quote from <a href=\"http://wisdom.limo\" target=\"_blank\">Merlin Mann's \"The Wisdom Project\" - http://wisdom.limo</a>"
+  help_text: |
+    “Brief introductory remarks regarding the Project:<br/>
+    - The ideas on offer here are based on my own experiences and sensibilities. They are mostly things that, above all, I have needed to learn.<br/>
+    - As it happens, most of the ideas have been painful to learn and even more difficult to practice.<br/>
+    - Some of the ideas are, admittedly, just my opinion.<br/>
+    - Many of the ideas will seem to contradict one other. Unfortunately, that doesn't mean one of them has to be wrong.<br/>
+    - None of the ideas will be true for every person or for all times. In the event that you ever successfully identify ideas that are true for every person and for all times, you may wish to start a religion.”<br/>
+    Merlin Mann
+  category: "life,productivity"
+  github_url: "https://github.com/VisualYeti/wisdom_trmnl"
+  email_address: "support@visualyeti.com"
+  learn_more_url: "http://wisdom.limo"
 - keyname: quote_size
   field_type: select
   name: Full View Quote Size
   default: 20
   optional: true
   options:
-  - Extra Small: 5
-  - Small: 10
-  - Medium: 20
-  - Large: 30
+  - Extra Small: "5"
+  - Small: "10"
+  - Medium: "20"
+  - Large: "30"
 - keyname: quote_font
   field_type: select
   name: Quote Font
@@ -40,5 +36,3 @@ custom_fields:
   - Raleway
   - Rubik
   - Default TRMNL Fonts: TRMNL
-name: The Wisdom Project Quotes
-refresh_interval: 1440
