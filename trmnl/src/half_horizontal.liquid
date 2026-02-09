@@ -1,32 +1,20 @@
 <div class="view view--half_horizontal">
 	<div class="quote-font layout layout--row">
-		<div class="quote-mark-top stretch-y value--small value--xxlarge text--gray-40" >
-			“
+		<div class="stretch-y flex flex--col flex--top" >
+			<div class="quote-font quote-mark-top text--gray-40 value--small value--xxlarge">“</div>
 		</div>
 		<div id="quote" class="value--small value--xlarge text--black" data-value-fit="true" data-value-fit-max-height="180">
+			<span class="quote-font">
 			{% if data.quote_html %}
 				{{ data.quote_html }}
 			{% else %}
 				Unable to load a quote.
 			{% endif %}
+			</span>
 		</div>
-		<div class="stretch-y text--gray-40">
-			<div class="layout layout--col layout--stretch-y" >
-				<div>&nbsp;</div>
-				<div>&nbsp;</div>
-				<div>&nbsp;</div>
-				<div>&nbsp;</div>
-				<div class="quote-mark-bottom text--gray-40 value--small value--xxlarge">”</div>
-			</div>
+		<div class="stretch-y flex flex--col flex--bottom">
+			<div class="quote-font quote-mark-bottom text--gray-40 value--small value--xxlarge">”</div>
 		</div>
 	</div>
 	{{ wisdom_quote_footer }}
 </div>
-<style>
-	.quote-mark-top {
-		margin-top: -.1em;
-	}
-	.quote-mark-bottom {
-		margin-bottom: -.1em;
-	}
-</style>
