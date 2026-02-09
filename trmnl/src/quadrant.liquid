@@ -13,12 +13,16 @@
 			</span>
 		</div>
 		<div class="stretch-y flex flex--col flex--bottom">
-			<div class="quote-font quote-mark-bottom text--gray-40 value--small value--large">”</div>
+			<span class="quote-font quote-mark-bottom text--gray-40 value--small value--large">”</span>
 		</div>
 	</div>
 	{{ wisdom_quote_footer_short }}
 </div>
 <style>
+	.quote-mark-top {
+		display: inline-block;
+		transform: translateY(-0.15em);
+	}
 	.quote-mark-bottom {
 		display: inline-block;
 		transform: translateY(0.75em);

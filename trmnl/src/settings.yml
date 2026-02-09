@@ -24,6 +24,7 @@ custom_fields:
   default: 20
   optional: true
   options:
+  - Extra Small: 5
   - Small: 10
   - Medium: 20
   - Large: 30

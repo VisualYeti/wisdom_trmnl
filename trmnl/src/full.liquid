@@ -1,10 +1,12 @@
 <div class="view view--full">
 	<div class="layout layout--row">
 		<div class="stretch-y flex flex--col flex--top" >
-			<div class="quote-font quote-mark-top text--gray-40 value--small value--xxxlarge">“</div>
+			<span class="quote-font quote-mark-top text--gray-40 value--small value--xxxlarge" >“</span>
 		</div>
-		{% if trmnl.plugin_settings.custom_fields_values.quote_size == "10" %}
+		{% if trmnl.plugin_settings.custom_fields_values.quote_size == "5" %}
 		<div class="value--xsmall value--large text--black" data-value-fit="true" data-value-fit-max-height="100">
+		{% elsif trmnl.plugin_settings.custom_fields_values.quote_size == "10" %}
+		<div class="value--xsmall value--large text--black" data-value-fit="true" data-value-fit-max-height="180">
 		{% elsif trmnl.plugin_settings.custom_fields_values.quote_size == "20" %}
 		<div class="value-small value--xxlarge text--black" data-value-fit="true" data-value-fit-max-height="280">
 		{% elsif trmnl.plugin_settings.custom_fields_values.quote_size == "30" %}
@@ -21,7 +23,7 @@
 			</span>
 		</div>
 		<div class="stretch-y flex flex--col flex--bottom">
-			<div class="quote-font quote-mark-bottom text--gray-40 value-small value--xxxlarge">”</div>
+			<span class="quote-font quote-mark-bottom text--gray-40 value-small value--xxxlarge">”</span>
 		</div>
 	</div>
 	{{ wisdom_quote_footer }}
